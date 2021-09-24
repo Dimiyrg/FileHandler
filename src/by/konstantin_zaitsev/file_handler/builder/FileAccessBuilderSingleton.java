@@ -4,7 +4,7 @@ import by.konstantin_zaitsev.file_handler.file_access.IFileAccess;
 import by.konstantin_zaitsev.file_handler.file_access.decorator.CompressionFileAccessDecorator;
 import by.konstantin_zaitsev.file_handler.file_access.decorator.EncryptionFileAccessDecorator;
 
-public class FileAccessBuilderSingleton implements IBuilder {
+public final class FileAccessBuilderSingleton implements IBuilder {
 
   private static FileAccessBuilderSingleton instance;
   private IFileAccess fileAccess;

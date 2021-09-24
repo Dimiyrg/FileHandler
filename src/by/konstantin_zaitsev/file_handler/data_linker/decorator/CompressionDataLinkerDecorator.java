@@ -45,6 +45,6 @@ public class CompressionDataLinkerDecorator extends DataLinkerDecorator {
     }
     String fileName = truePath.substring(
         truePath.lastIndexOf('/') + 1, truePath.lastIndexOf('.')) + format;
-    return new String[] {fileName, truePath};
+    return new String[]{fileName, truePath};
   }
 }

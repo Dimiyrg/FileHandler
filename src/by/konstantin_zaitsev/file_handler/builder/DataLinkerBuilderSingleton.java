@@ -4,7 +4,7 @@ import by.konstantin_zaitsev.file_handler.data_linker.IDataLinker;
 import by.konstantin_zaitsev.file_handler.data_linker.decorator.CompressionDataLinkerDecorator;
 import by.konstantin_zaitsev.file_handler.data_linker.decorator.EncryptionDataLinkerDecorator;
 
-public class DataLinkerBuilderSingleton implements IBuilder {
+public final class DataLinkerBuilderSingleton implements IBuilder {
 
   private static DataLinkerBuilderSingleton instance;
   private IDataLinker dataLinker;
