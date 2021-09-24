@@ -43,8 +43,8 @@ public class CompressionDataLinkerDecorator extends DataLinkerDecorator {
       format = ".json";
       truePath = wrapper.getPath().replace("(json)", "");
     }
-    String fileName =
-        truePath.substring(truePath.lastIndexOf('/'), truePath.lastIndexOf('.')) + format;
+    String fileName = truePath.substring(
+        truePath.lastIndexOf('/') + 1, truePath.lastIndexOf('.')) + format;
     return new String[] {fileName, truePath};
   }
 }
