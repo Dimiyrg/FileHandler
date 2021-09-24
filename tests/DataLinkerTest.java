@@ -1,3 +1,4 @@
+import by.konstantin_zaitsev.file_handler.builder.DataLinkerBuilderSingleton;
 import by.konstantin_zaitsev.file_handler.data_linker.DataLinker;
 import by.konstantin_zaitsev.file_handler.data_linker.IDataLinker;
 import by.konstantin_zaitsev.file_handler.data_linker.decorator.CompressionDataLinkerDecorator;
@@ -77,6 +78,20 @@ public class DataLinkerTest {
     IFileAccess fileAccess = new CompressionFileAccessDecorator(
         new FileAccess("temp/test/data_linker/test_writeDataEncryptionCompression.zip"));
     dataLinker.writeData("Data for comparison");
+    String expected = "RGF0YSBmb3IgY29tcGFyaXNvbg==";
+    String actual = fileAccess.readData();
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void testDataLinkerBuilder() {
+    DataLinkerBuilderSingleton builder = DataLinkerBuilderSingleton.getInstance(
+        new DataLinker("temp/test/data_linker/test_DataLinkerBuilder.zip(txt)"));
+    builder.setCompress();
+    builder.setEncrypt();
+    IFileAccess fileAccess = new CompressionFileAccessDecorator(
+        new FileAccess("temp/test/data_linker/test_DataLinkerBuilder.zip"));
+    builder.getDataLinker().writeData("Data for comparison");
     String expected = "RGF0YSBmb3IgY29tcGFyaXNvbg==";
     String actual = fileAccess.readData();
     Assert.assertEquals(expected, actual);

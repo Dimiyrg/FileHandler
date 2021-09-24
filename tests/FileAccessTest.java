@@ -1,3 +1,4 @@
+import by.konstantin_zaitsev.file_handler.builder.FileAccessBuilderSingleton;
 import by.konstantin_zaitsev.file_handler.file_access.FileAccess;
 import by.konstantin_zaitsev.file_handler.file_access.IFileAccess;
 import by.konstantin_zaitsev.file_handler.file_access.decorator.CompressionFileAccessDecorator;
@@ -61,6 +62,17 @@ public class FileAccessTest {
         new FileAccess("temp/test/file_access/test_readDataEncryptionCompression.zip")));
     String expected = "Data for comparison";
     String actual = fileAccess.readData();
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void testFileAccessBuilder() {
+    FileAccessBuilderSingleton builder = FileAccessBuilderSingleton.getInstance(
+        new FileAccess("temp/test/file_access/test_FileAccessBuilder.zip"));
+    builder.setCompress();
+    builder.setEncrypt();
+    String expected = "Data for comparison";
+    String actual = builder.getFileAccess().readData();
     Assert.assertEquals(expected, actual);
   }
 }
